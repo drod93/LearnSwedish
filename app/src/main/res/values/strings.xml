@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">LearnSwedish</string>
+    <string name="greeting_message">Whats Up!</string>
+    <string name="swedish_hint">Swedish</string>
+    <string name="english_hint">English</string>
+    <string name="write_button">Write to DB</string>
+    <string name="read_button">Read DB</string>
+    <string name="write_perm_button">Request write permission</string>
+    <string name="read_perm_button">Request read permission</string>
+    <string name="empty_db">Nothing in database</string>
 </resources>

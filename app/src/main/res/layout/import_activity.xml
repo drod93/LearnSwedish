@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/swedishField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="76dp"
+        android:background="#CCCCCC"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:autofillHints="Swedish"
+        android:hint="@string/swedish_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayDB">
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/englishField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="148dp"
+        android:background="#CCCCCC"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:autofillHints="English"
+        android:hint = "@string/english_hint"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayDB">
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/displayDB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="230dp"
+        android:text= "@string/greeting_message"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/writeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="79dp"
+        android:text="@string/write_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/swedishField"
+        android:onClick="writeToDB"/>
+
+    <Button
+        android:id="@+id/readButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="104dp"
+        android:layout_marginLeft="104dp"
+        android:layout_marginTop="68dp"
+        android:text="@string/read_button"
+        app:layout_constraintStart_toEndOf="@+id/writeButton"
+        app:layout_constraintTop_toBottomOf="@+id/swedishField"
+        android:onClick="readFromDB"/>
+
+    <!--Button to request camera permission-->
+
+    <Button
+        android:id="@+id/readPerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="152dp"
+        android:padding="8dp"
+        android:text="@string/read_perm_button"
+        app:layout_constraintStart_toEndOf="@+id/writePerm"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/writePerm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="152dp"
+        android:padding="8dp"
+        android:text="@string/write_perm_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
