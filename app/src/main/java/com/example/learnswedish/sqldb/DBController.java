@@ -7,13 +7,10 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 
-import static android.widget.Toast.LENGTH_LONG;
 
 public class DBController extends SQLiteOpenHelper {
     private static final String LOGCAT = null;
@@ -50,7 +47,7 @@ public class DBController extends SQLiteOpenHelper {
         onCreate(database);
     }
 
-    public void catchError(SQLiteDatabase database, String word1, String word2){
+    public void insertWords(SQLiteDatabase database, String word1, String word2){
         try{
             ContentValues contentValues = new ContentValues();
             contentValues.put(colSwedish, word1);
