@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -71,17 +72,16 @@ public class ImportActivity extends AppCompatActivity {
     public void writeToDB(View view) {
 
 
-        ContentValues contentValues = new ContentValues();
-
         EditText swedishField = findViewById(R.id.swedishField);
         String swedishWord = swedishField.getText().toString();
         EditText englishField = findViewById(R.id.englishField);
         String englishWord = englishField.getText().toString();
 
-        contentValues.put(DBController.colSwedish, swedishWord);
-        contentValues.put(DBController.colEnglish, englishWord);
-        db.insert(DBController.tableName, null, contentValues);
-
+        try{
+        controller.catchError(db, swedishWord,englishWord);}
+        catch (SQLException e){
+            e.printStackTrace();
+            Toast.makeText(ImportActivity.this, "This entry already exists", Toast.LENGTH_LONG).show();}
 
     }
 
