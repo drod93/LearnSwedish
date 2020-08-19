@@ -1,7 +1,6 @@
 package com.example.learnswedish;
 
 import android.Manifest;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.database.SQLException;
@@ -78,7 +77,7 @@ public class ImportActivity extends AppCompatActivity {
         String englishWord = englishField.getText().toString();
 
         try{
-        controller.catchError(db, swedishWord,englishWord);}
+        controller.insertWords(db, swedishWord,englishWord);}
         catch (SQLException e){
             e.printStackTrace();
             Toast.makeText(ImportActivity.this, "This entry already exists", Toast.LENGTH_LONG).show();}
