@@ -1,13 +1,19 @@
 package com.example.learnswedish.sqldb;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class DBController extends SQLiteOpenHelper {
     private static final String LOGCAT = null;
@@ -29,9 +35,10 @@ public class DBController extends SQLiteOpenHelper {
 
         String query;
 
-        query = "CREATE TABLE IF NOT EXISTS " + tableName + "( " + colSwedish + " TEXT, " + colEnglish + " TEXT PRIMARY KEY)";
+        query = "CREATE TABLE IF NOT EXISTS " + tableName + "( " + colSwedish + " TEXT, " + colEnglish + " TEXT, PRIMARY KEY( " + colSwedish + "," + colEnglish + "))" ;
         Log.e("create Query", query);
         database.execSQL(query);
+
 
     }
 
@@ -42,6 +49,19 @@ public class DBController extends SQLiteOpenHelper {
         database.execSQL(query);
         onCreate(database);
     }
+
+    public void catchError(SQLiteDatabase database, String word1, String word2){
+        try{
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(colSwedish, word1);
+            contentValues.put(colEnglish, word2);
+            database.insertOrThrow(tableName, null, contentValues);
+        } catch(SQLException e){
+            throw new SQLException(e.getMessage());
+        }
+
+    }
+
 
     public ArrayList<HashMap<String, String>> getAllProducts() {
 
