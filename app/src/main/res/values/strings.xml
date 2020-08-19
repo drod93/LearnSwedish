@@ -8,4 +8,6 @@
     <string name="write_perm_button">Request write permission</string>
     <string name="read_perm_button">Request read permission</string>
     <string name="empty_db">Nothing in database</string>
+    <string name="import_act_button">Import Activity</string>
+    <string name="flashcard_act_button">Flashcard Activity</string>
 </resources>
