@@ -10,4 +10,5 @@
     <string name="empty_db">Nothing in database</string>
     <string name="import_act_button">Import Activity</string>
     <string name="flashcard_act_button">Flashcard Activity</string>
+    <string name="clear_all">Clear Table</string>
 </resources>

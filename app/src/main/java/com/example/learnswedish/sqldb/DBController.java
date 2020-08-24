@@ -1,14 +1,17 @@
 package com.example.learnswedish.sqldb;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.AndroidRuntimeException;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 
 
@@ -57,6 +60,15 @@ public class DBController extends SQLiteOpenHelper {
             throw new SQLException(e.getMessage());
         }
 
+    }
+
+    public void deleteAll(SQLiteDatabase database)
+    {Cursor mCursor = database.rawQuery("SELECT * FROM " + tableName, null);
+    if(mCursor.getCount() == 0){throw new EmptyStackException();}
+    else{database.delete(tableName, null, null);
+    database.execSQL("delete from " + tableName);
+        }
+    mCursor.close();
     }
 
 

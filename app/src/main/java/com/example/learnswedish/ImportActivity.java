@@ -6,13 +6,17 @@ import android.content.pm.PackageManager;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.AndroidRuntimeException;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 import java.util.HashMap;
 
 import com.example.learnswedish.sqldb.DBController;
@@ -70,7 +74,6 @@ public class ImportActivity extends AppCompatActivity {
 
     public void writeToDB(View view) {
 
-
         EditText swedishField = findViewById(R.id.swedishField);
         String swedishWord = swedishField.getText().toString();
         EditText englishField = findViewById(R.id.englishField);
@@ -82,6 +85,31 @@ public class ImportActivity extends AppCompatActivity {
             e.printStackTrace();
             Toast.makeText(ImportActivity.this, "This entry already exists", Toast.LENGTH_LONG).show();}
 
+    }
+
+    public void clearDB(View view) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ImportActivity.this);
+        alertDialogBuilder.setMessage("Are you sure you want to clear table?");
+                alertDialogBuilder.setPositiveButton("yes",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                try{controller.deleteAll(db);}
+                                catch(EmptyStackException e){
+                                    e.printStackTrace();
+                                    Toast.makeText(ImportActivity.this, "Table is already empty", Toast.LENGTH_LONG).show();}
+                            }
+                        });
+
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.show();
     }
 
     public void readFromDB(View view) {
@@ -96,6 +124,7 @@ public class ImportActivity extends AppCompatActivity {
             tv.setText(context.getString(R.string.empty_db));
         }
     }
+
 
     public void checkPermission(String permission, int requestCode)
     {

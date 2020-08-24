@@ -77,6 +77,20 @@
         app:layout_constraintTop_toBottomOf="@+id/swedishField"
         android:onClick="readFromDB"/>
 
+    <Button
+        android:id="@+id/ClearAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="@string/clear_all"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/writeButton"
+        app:layout_constraintVertical_bias="0.0"
+        android:onClick="clearDB"/>
+
     <!--Button to request camera permission-->
 
     <Button
@@ -104,6 +118,8 @@
         android:text="@string/write_perm_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
